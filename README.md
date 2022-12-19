@@ -4,7 +4,8 @@ Simple script to create exercise routine schedule.
 Features:
   * Adds days to the routine (no duplicates) every time it runs.
   * Will keep a 1:1 sync with the exercise list 
-      > add/remove exercise will reflect on the final routine
+      > add/remove exercise will reflect on the final routine 
+      >
       > removing will delete the progress of said exercise
   * Exports routine to an excel file.
   
