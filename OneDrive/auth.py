@@ -1,0 +1,28 @@
+import webbrowser
+from msal import ConfidentialClientApplication,PublicClientApplication
+
+
+client_secret  = 'MRr8Q~AdkOWPiIQw~5BcwN5FvVKPN8sDHn2MTdeJ'
+app_id = '4390b30a-6c6f-42ce-93b1-eb235e6e5650'
+
+SCOPES = ['Files.ReadWrite']
+
+client = ConfidentialClientApplication(client_id=app_id,client_credential=client_secret)
+
+authorization_url = client.get_authorization_request_url(SCOPES)
+
+print(authorization_url)
+webbrowser.open(authorization_url)
+
+# http://localhost:8000/callback?code=M.R3_BL2.4133f144-f068-8361-d804-f735aaff64da
+
+authorization_code = 'M.R3_BL2.84d2d875-89fd-220b-2ff7-193e55bbddc7'
+
+access_token = client.acquire_token_by_authorization_code(code=authorization_code,scopes=SCOPES)
+
+print(access_token)
+
+access_id = access_token['access_token']
+print(access_id)
+#'EwBoA8l6BAAUkj1NuJYtTVha+Mogk+HEiPbQo04AAZkYZww6HBwYZLPZqAquteo+138xtN8tTLEnPI3+rTP5XDzXRKpvg+8OhPRxiEY/YA9WI45RLvQ/Wv1z8kjSPBjHRt5zmIPG662k4hXAFfKD78s+r0Wbi+Y+hX7N/exDzLYtFvxt1p1wI6F1pyiIfVjTDNAORIBXT5waCGZ26V786lt6KJDUDwKf+fuFLT+v/TIYCjQkeHOL2yYZ6saZBPAUAuRWoyGsjEYlRTRbhHD7UoMCi3nb5K0gPtv6bxzCjX9V6VC4+PiQcaOdPMWUaL66/U8IDmP0l4WWAOq34drFdcBo0HbPaHFnuY7zTjAQvrA4rrnzFixeKIrq/TKeJX8DZgAACHwSz3UNDUlVOAIgG0OBBCPWwlCTkXKr0MjM8FhUyApRIZ5RMtz8TDpnOgwxqaLYdhraD0maSdHBTwnO38JFNetiQ7XKk7riI7hYEFVXzSmK+x2NklKwwCrH/N2fvLPsm4zMBD5uchVpJ7bpAP0rMmRL9gHjvKjhXMptAp+dYWDqEoH2jCLKDxAoY9rKJbCbY0yV+ex3RanwFZlnVhmYQ67mspzl9nS2sY69lKiwiTm4F+E9VkqIAXibgu+WqXkpfxlIfhH1TlkZajMIEaZTUJTCKiq39yRmDWX8fBCdIfgJb/0Q6zO2tuiHi2Z287Uech+gD315IGNGZAPLvi/R76aJGU/FiAZNLhRNCRVieIwCxOMbH+wvWKOixX6EThtFNowwyVtZlUA/6haKmcKT6MF22grngra2ZZYwI4AAvIdy7bXjoNtTV6yumsJgTE8QzpaFQ+OSpapEYwgBzQM92IEGOm62ekEz0rQQ0dSr19V6JhZ9OWdtsKd4deHgB9nmlXr8+74nOVLoaTHRqcqN6KOfttRT100FdGcjpwhIFFL98FqLtpiEUfvZiE/L7BbNKkk5eBnY4TFyEWkUL3V+4/IQDEN1DoToo1NMMc901V6KrmXcEfCQjbzIj4crAaNxE/oJT3WYJCqU1YYRaSenLYejnuF47w5/kyoF+qEXfebtntB3YLYHwNgOJH44Ji7TfahSGU9AwJfFjcaITJjdvjX+WC1AM4kStbdFOpQJXLouYvHkSaorrq8cS5MdyRbB8v7TggI='
+
